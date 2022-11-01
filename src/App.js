@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import { createGlobalStyle } from "styled-components";
+import AppRoutes from "./routes/Routes";
+import CoolPage from './components/ScrollToTop/ScrollToTop'
+import { ThemeProvider } from './contexts/theme-context'
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ThemeProvider>
+        <>
+          <Navbar />
+          <AppRoutes />
+          <CoolPage />
+          <GlobalStyle />
+        </>
+      </ThemeProvider>
   );
 }
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* max-width: 1440px;
+    margin: auto;
+    background-color: #F7F7F7; */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  }
+`
 
 export default App;
